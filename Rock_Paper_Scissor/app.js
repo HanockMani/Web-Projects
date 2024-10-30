@@ -14,16 +14,18 @@ const resetGame = () =>{
     computerScoreDisplay.innerText = computerScore;
     messageBox.innerText = "Make Your Move";
     messageBox.style.backgroundColor = "#4A628A";
+    document.body.style.backgroundColor = "white";
 };
 
 const checkWin = () => {
     if(playerScore >=5){
+        alert("You Win!");
         resetGame();
-        messageBox.innerText = "You Win!";
+        
     }
     else if(computerScore >=5){
+        alert("You Lost.");
         resetGame();
-        messageBox.innerText = "Computer Wins!";
     }
 };
 
@@ -74,9 +76,9 @@ const playGame = (playerChoice) => {
 
 choices.forEach((choice) => {
     choice.addEventListener('click', () => {
-        checkWin();
         const playerChoice = choice.getAttribute('id');
         playGame(playerChoice);
+        checkWin();
     });    
 });
 
