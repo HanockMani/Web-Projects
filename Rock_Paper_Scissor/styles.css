@@ -57,6 +57,7 @@ img{
 
 .msg-container{
     margin-top: 5rem;
+    height: 5rem;
 }
 
 #msg{
@@ -65,5 +66,28 @@ img{
     display: inline;
     font-size: 2rem;
     padding: 1rem;
+    border-radius: 3rem;
+}
+
+.reset-button-container{
+    margin-top: 1rem;
+    height: 2rem;
+}
+
+#reset-button{
+    font-size: 1.8rem;
+    padding: 1rem;
+    border-style: hidden;
     border-radius: 2rem;
+    background-color: #091933;
+    color: #DFF2EB;
+}
+
+#reset-button:hover{
+    cursor: pointer;
+    opacity: 85%;
+}
+
+#reset-button:active{
+    opacity: 70%;
 }

@@ -5,12 +5,33 @@ const choices = document.querySelectorAll(".choice");
 const messageBox = document.querySelector("#msg");
 const playerScoreDisplay = document.querySelector("#player-score");
 const computerScoreDisplay = document.querySelector("#computer-score");
+const resetButton = document.querySelector("#reset-button");
+
+const resetGame = () =>{
+    playerScore = 0;
+    computerScore = 0;
+    playerScoreDisplay.innerText = playerScore;
+    computerScoreDisplay.innerText = computerScore;
+    messageBox.innerText = "Make Your Move";
+    messageBox.style.backgroundColor = "#4A628A";
+};
+
+const checkWin = () => {
+    if(playerScore >=5){
+        resetGame();
+        messageBox.innerText = "You Win!";
+    }
+    else if(computerScore >=5){
+        resetGame();
+        messageBox.innerText = "Computer Wins!";
+    }
+};
 
 const getComputerChoice = () =>{
     const choices = ["rock", "paper", "scissor"];
     const generatedIndex = Math.floor(Math.random()*3);
     return choices[generatedIndex];
-}
+};
 
 const displayMessage = (playerPoint, playerChoice, computerChoice) => {
     if(playerPoint == true){
@@ -25,7 +46,7 @@ const displayMessage = (playerPoint, playerChoice, computerChoice) => {
         messageBox.innerText = `Computer gets a Point! Computers ${playerChoice} beats ${computerChoice}`;
         messageBox.style.backgroundColor = "red";
     }
-}
+};
 
 const playGame = (playerChoice) => {
     const computerChoice = getComputerChoice();
@@ -53,7 +74,17 @@ const playGame = (playerChoice) => {
 
 choices.forEach((choice) => {
     choice.addEventListener('click', () => {
+        checkWin();
         const playerChoice = choice.getAttribute('id');
         playGame(playerChoice);
     });    
+});
+
+resetButton.addEventListener('click', () =>{
+    playerScore = 0;
+    computerScore = 0;
+    playerScoreDisplay.innerText = playerScore;
+    computerScoreDisplay.innerText = computerScore;
+    messageBox.innerText = "Make Your Move";
+    messageBox.style.backgroundColor = "#4A628A";
 });
